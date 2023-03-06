@@ -1,0 +1,19 @@
+# ninja log v5
+18	1587	6998367150729667	CMakeFiles/fractaldiver.dir/main.cpp.obj	51ef1b783cb13d70
+1636	2117	6998367154867727	fractaldiver.exe	fcebbaa76f7b8fc9
+40	1517	6998367149832064	CMakeFiles/fractaldiver.dir/MainRenderer.cpp.obj	329451359aef885a
+31	1555	6998367150320746	CMakeFiles/fractaldiver.dir/Maths.cpp.obj	a963c370b35a28b8
+24	1635	6998367151288169	CMakeFiles/fractaldiver.dir/Engine.cpp.obj	3b6d20665423c7b0
+21	1140	6998371774089557	CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj	53eb9263bbc14381
+15	1142	6998371774099520	CMakeFiles/fractaldiver.dir/main.cpp.obj	51ef1b783cb13d70
+1142	1449	6998371776134091	fractaldiver.exe	a0ba588eb00b576e
+57	1803	6998373007012286	CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj	53eb9263bbc14381
+32	2008	6998373008679811	CMakeFiles/fractaldiver.dir/main.cpp.obj	51ef1b783cb13d70
+49	2481	6998373013172125	CMakeFiles/fractaldiver.dir/MainRenderer.cpp.obj	329451359aef885a
+42	2884	6998373017837994	CMakeFiles/fractaldiver.dir/Engine.cpp.obj	3b6d20665423c7b0
+2884	3214	6998373020409911	fractaldiver.exe	a0ba588eb00b576e
+113	1586	6998373850187970	CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj	53eb9263bbc14381
+77	1594	6998373850297686	CMakeFiles/fractaldiver.dir/MainRenderer.cpp.obj	329451359aef885a
+52	1632	6998373850689809	CMakeFiles/fractaldiver.dir/main.cpp.obj	51ef1b783cb13d70
+23	940	6998374245060627	CMakeFiles/fractaldiver.dir/Engine.cpp.obj	3b6d20665423c7b0
+941	1232	6998374246955819	fractaldiver.exe	a0ba588eb00b576e
