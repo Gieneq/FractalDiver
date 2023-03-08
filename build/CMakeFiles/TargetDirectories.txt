@@ -1,5 +1,3 @@
 C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/fractaldiver.dir
-C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/package.dir
-C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/package_source.dir
 C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/edit_cache.dir
 C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/rebuild_cache.dir

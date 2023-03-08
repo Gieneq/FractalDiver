@@ -49,6 +49,15 @@ cmake_ninja_workdir = C$:/Users/piotr/CppWorkspace/FractalDiver/build/
 
 build cmake_object_order_depends_target_fractaldiver: phony || CMakeFiles/fractaldiver.dir
 
+build CMakeFiles/fractaldiver.dir/Maths.cpp.obj: CXX_COMPILER__fractaldiver_Debug C$:/Users/piotr/CppWorkspace/FractalDiver/Maths.cpp || cmake_object_order_depends_target_fractaldiver
+  DEP_FILE = CMakeFiles\fractaldiver.dir\Maths.cpp.obj.d
+  FLAGS = -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -std=gnu++14
+  INCLUDES = -isystem C:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/include/SDL2
+  OBJECT_DIR = CMakeFiles\fractaldiver.dir
+  OBJECT_FILE_DIR = CMakeFiles\fractaldiver.dir
+  TARGET_COMPILE_PDB = CMakeFiles\fractaldiver.dir\
+  TARGET_PDB = fractaldiver.pdb
+
 build CMakeFiles/fractaldiver.dir/main.cpp.obj: CXX_COMPILER__fractaldiver_Debug C$:/Users/piotr/CppWorkspace/FractalDiver/main.cpp || cmake_object_order_depends_target_fractaldiver
   DEP_FILE = CMakeFiles\fractaldiver.dir\main.cpp.obj.d
   FLAGS = -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -std=gnu++14
@@ -60,15 +69,6 @@ build CMakeFiles/fractaldiver.dir/main.cpp.obj: CXX_COMPILER__fractaldiver_Debug
 
 build CMakeFiles/fractaldiver.dir/Engine.cpp.obj: CXX_COMPILER__fractaldiver_Debug C$:/Users/piotr/CppWorkspace/FractalDiver/Engine.cpp || cmake_object_order_depends_target_fractaldiver
   DEP_FILE = CMakeFiles\fractaldiver.dir\Engine.cpp.obj.d
-  FLAGS = -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -std=gnu++14
-  INCLUDES = -isystem C:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/include/SDL2
-  OBJECT_DIR = CMakeFiles\fractaldiver.dir
-  OBJECT_FILE_DIR = CMakeFiles\fractaldiver.dir
-  TARGET_COMPILE_PDB = CMakeFiles\fractaldiver.dir\
-  TARGET_PDB = fractaldiver.pdb
-
-build CMakeFiles/fractaldiver.dir/Maths.cpp.obj: CXX_COMPILER__fractaldiver_Debug C$:/Users/piotr/CppWorkspace/FractalDiver/Maths.cpp || cmake_object_order_depends_target_fractaldiver
-  DEP_FILE = CMakeFiles\fractaldiver.dir\Maths.cpp.obj.d
   FLAGS = -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -std=gnu++14
   INCLUDES = -isystem C:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/include/SDL2
   OBJECT_DIR = CMakeFiles\fractaldiver.dir
@@ -102,7 +102,7 @@ build CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj: CXX_COMPILER__fractaldi
 #############################################
 # Link the executable fractaldiver.exe
 
-build fractaldiver.exe: CXX_EXECUTABLE_LINKER__fractaldiver_Debug CMakeFiles/fractaldiver.dir/main.cpp.obj CMakeFiles/fractaldiver.dir/Engine.cpp.obj CMakeFiles/fractaldiver.dir/Maths.cpp.obj CMakeFiles/fractaldiver.dir/MainRenderer.cpp.obj CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj | C$:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a
+build fractaldiver.exe: CXX_EXECUTABLE_LINKER__fractaldiver_Debug CMakeFiles/fractaldiver.dir/Maths.cpp.obj CMakeFiles/fractaldiver.dir/main.cpp.obj CMakeFiles/fractaldiver.dir/Engine.cpp.obj CMakeFiles/fractaldiver.dir/MainRenderer.cpp.obj CMakeFiles/fractaldiver.dir/FractalViewer.cpp.obj | C$:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a
   FLAGS = -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd
   LINK_FLAGS = -Xlinker /subsystem:console
   LINK_LIBRARIES = C:/Users/piotr/CppWorkspace/FractalDiver/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a  -mwindows  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -loldnames
@@ -114,30 +114,6 @@ build fractaldiver.exe: CXX_EXECUTABLE_LINKER__fractaldiver_Debug CMakeFiles/fra
   TARGET_FILE = fractaldiver.exe
   TARGET_IMPLIB = fractaldiver.lib
   TARGET_PDB = fractaldiver.pdb
-
-
-#############################################
-# Utility command for package
-
-build CMakeFiles/package.util: CUSTOM_COMMAND all
-  COMMAND = cmd.exe /C "cd /D C:\Users\piotr\CppWorkspace\FractalDiver\build && C:\CMake\bin\cpack.exe --config ./CPackConfig.cmake"
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build package: phony CMakeFiles/package.util
-
-
-#############################################
-# Utility command for package_source
-
-build CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\piotr\CppWorkspace\FractalDiver\build && C:\CMake\bin\cpack.exe --config ./CPackSourceConfig.cmake C:/Users/piotr/CppWorkspace/FractalDiver/build/CPackSourceConfig.cmake"
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build package_source: phony CMakeFiles/package_source.util
 
 
 #############################################

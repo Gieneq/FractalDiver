@@ -13,7 +13,7 @@ find_package(SDL2 REQUIRED)
 #add_definitions(-DSDL_MAIN_HANDLED)
 #g++ -std=c++17 Test.cpp -I"include" -L"lib" -Wall -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -o Test
 
-add_executable(fractaldiver main.cpp Engine.cpp Maths.cpp MainRenderer.cpp FractalViewer.cpp)
+add_executable(fractaldiver Maths.cpp main.cpp Engine.cpp MainRenderer.cpp FractalViewer.cpp)
 
 
 target_link_libraries(fractaldiver PRIVATE SDL2::SDL2)

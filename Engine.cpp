@@ -11,7 +11,7 @@ Engine::~Engine() {
 bool Engine::setup(size_t window_width, size_t window_height) {
     using std::cerr;
     using std::endl;
-    std::cout << "Setting up game base" << std::endl;
+    std::cout << "Setting up engine" << std::endl;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         cerr << "SDL_Init Error: " << SDL_GetError() << endl;
@@ -54,7 +54,7 @@ static inline bool check_if_quitting_window(SDL_Event &ev) {
 void Engine::loop() {
     auto last_tick_count = SDL_GetPerformanceCounter();
     auto current_tick_count = SDL_GetPerformanceCounter();
-    float dt{ 0 };
+    double dt_sec{ 0.0 };
     while (true) {
         /*
          * INPUT
@@ -65,7 +65,7 @@ void Engine::loop() {
                 break;
             // if (!gui.input(ev)) {
             //     if (!world.input(ev)) {
-            //         this->input(ev);
+            this->input(ev);
             //     }
             // }
         }
@@ -74,17 +74,29 @@ void Engine::loop() {
          * UPDATE
          */
         current_tick_count = SDL_GetPerformanceCounter();
-        dt = (current_tick_count - last_tick_count) / (float)SDL_GetPerformanceFrequency() * 1000.0F;
+        dt_sec = ((current_tick_count - last_tick_count) / (double)SDL_GetPerformanceFrequency());
+        
         // gui.update(dt);
         // world.update(dt);
-        this->update(dt);
-        SDL_Delay(static_cast<unsigned int>(std::floor(std::max(0.0F, Presets::FPS_CAP_INTERV_MS - dt))));
+        this->update(dt_sec);
+        SDL_Delay(static_cast<unsigned int>(std::floor(1000.0 * std::max(0.0, Presets::FPS_CAP_INTERVAL - dt_sec))));
         last_tick_count = current_tick_count;
+
+        /* Measuring true FPS */
+        fps_eval_accumulator += dt_sec;
+        ++fps_eval_iterations;
+        if ((Presets::Utils::FPS_PRINT_INTERVAL > 0.0) && (fps_eval_accumulator > Presets::Utils::FPS_PRINT_INTERVAL)) {
+            fps_eval_accumulator -=Presets::Utils::FPS_PRINT_INTERVAL;
+            true_fps = 1.0/(Presets::Utils::FPS_PRINT_INTERVAL / static_cast<double>(fps_eval_iterations));
+            fps_eval_iterations = 0;
+
+            std::cout << "True FPS: " << true_fps << " FPS" << std::endl;
+        }
 
         /*
          * RENDER
          */
-        renderer.prepare();
+        renderer.prepare(dt_sec);
         // gui.render(&renderer);
         // world.render(&renderer);
         this->render(&renderer);

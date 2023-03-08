@@ -26,28 +26,28 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 The CXX compiler identification is Clang, found in "C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/3.25.1/CompilerIdCXX/a.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-r053py
+Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-6gfqp7
 
-Run Build Command(s):C:/ninja/ninja.exe cmTC_3acf5 && [1/2] Building C object CMakeFiles/cmTC_3acf5.dir/CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_3acf5.exe
+Run Build Command(s):C:/ninja/ninja.exe cmTC_04b12 && [1/2] Building C object CMakeFiles/cmTC_04b12.dir/CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_04b12.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-j85ap2
+Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-ta4ihe
 
-Run Build Command(s):C:/ninja/ninja.exe cmTC_bf437 && [1/2] Building CXX object CMakeFiles/cmTC_bf437.dir/CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_bf437.exe
+Run Build Command(s):C:/ninja/ninja.exe cmTC_2ec75 && [1/2] Building CXX object CMakeFiles/cmTC_2ec75.dir/CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_2ec75.exe
 
 
 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-44i29p
+Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-o2nibj
 
-Run Build Command(s):C:/ninja/ninja.exe cmTC_5455c && [1/2] Building CXX object CMakeFiles/cmTC_5455c.dir/feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_5455c.exe
+Run Build Command(s):C:/ninja/ninja.exe cmTC_42cd9 && [1/2] Building CXX object CMakeFiles/cmTC_42cd9.dir/feature_tests.cxx.obj
+[2/2] Linking CXX executable cmTC_42cd9.exe
 
 
 
@@ -110,10 +110,10 @@ Run Build Command(s):C:/ninja/ninja.exe cmTC_5455c && [1/2] Building CXX object 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-8qcs5m
+Change Dir: C:/Users/piotr/CppWorkspace/FractalDiver/build/CMakeFiles/CMakeScratch/TryCompile-xmy8ra
 
-Run Build Command(s):C:/ninja/ninja.exe cmTC_502b2 && [1/2] Building CXX object CMakeFiles/cmTC_502b2.dir/feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_502b2.exe
+Run Build Command(s):C:/ninja/ninja.exe cmTC_dd851 && [1/2] Building CXX object CMakeFiles/cmTC_dd851.dir/feature_tests.cxx.obj
+[2/2] Linking CXX executable cmTC_dd851.exe
 
 
 

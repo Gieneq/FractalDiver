@@ -1,4 +1,7 @@
 #include "MainRenderer.h"
+#include <utility>
+#include <iostream>
+#include "rgb_hsv.h"
 
 MainRenderer::MainRenderer() {
 
@@ -18,10 +21,34 @@ bool MainRenderer::setup(SDL_Window * window) {
         return false;
     }
     this->window = window;
+
+    surface = SDL_CreateRGBSurface(0, Presets::WINDOW_WIDTH, Presets::WINDOW_HEIGHT, Presets::WINDOW_DEPTH, 0, 0, 0, 0);
+
+    build_colors_palett();
     return true;
 }
 
-void MainRenderer::prepare() {
+void MainRenderer::build_colors_palett() {
+    for(size_t i{0U}; i < Presets::Rendering::PALETTE_COLORS_COUNT; ++i) {
+        float r,g,b;
+
+        size_t hue_i = (i + Presets::Rendering::PALETTE_SHIFT_DEGREES) % Presets::Rendering::PALETTE_COLORS_COUNT;
+        float h = 360.0F * static_cast<float>(hue_i) / static_cast<float>(Presets::Rendering::PALETTE_COLORS_COUNT);
+        float s = 1;
+        //float v = static_cast<float>(Presets::Sim::ITERATIONS - i - 1) / static_cast<float>(Presets::Sim::ITERATIONS);
+        // v = powf(v, 0.8F);
+        // v = v > 0.5F ? 1.0F : v;
+        float v = i < Presets::Rendering::PALETTE_COLORS_COUNT - Presets::Rendering::PALETTE_COLORS_THR ? 1.0F : 0.0F;
+        HSVtoRGB(r,g,b,h,s,v);
+        uint8_t px_r = static_cast<uint8_t>(255*r);
+        uint8_t px_g = static_cast<uint8_t>(255*g);
+        uint8_t px_b = static_cast<uint8_t>(255*b);
+        colors_palett[i] = {px_r, px_g, px_b, 255};
+    }
+}
+
+void MainRenderer::prepare(double dt) {
+    time_accumulator += dt;
     SDL_RenderClear(renderer);
 }
 
@@ -52,6 +79,63 @@ void MainRenderer::present() {
     // batch.clear();
 }
 
+uint8_t MainRenderer::get_gradient(size_t v) {
+    constexpr auto f_iterations = static_cast<float>(Presets::Sim::ITERATIONS);
+    constexpr auto fmax_color = 255.0F;
+    float fv = static_cast<float>(v);
+    fv = fmax_color * fv / f_iterations;
+    auto color = static_cast<int>(fv);
+    color = color > 255 ? 255 : color;
+    color = color < 0 ? 0 : color;
+    return (uint8_t)(color);
+}
+
+void MainRenderer::render_buffer(float* buffer) {
+    auto value_max = static_cast<float>(Presets::Rendering::PALETTE_COLORS_COUNT);
+    auto threshold = static_cast<float>(Presets::Rendering::PALETTE_COLORS_COUNT - Presets::Rendering::PALETTE_COLORS_THR);
+
+    SDL_LockSurface(surface);
+
+    for(size_t iy{0}; iy<Presets::WINDOW_HEIGHT; ++iy) {
+        for(size_t ix{0}; ix<Presets::WINDOW_WIDTH; ++ix) {
+            auto value = buffer[iy * Presets::WINDOW_WIDTH + ix];
+            // value /= (double)(Presets::Rendering::PALETTE_COLORS_COUNT);
+            // value = pow(value, .9);
+            // value *= (double)(Presets::Rendering::PALETTE_COLORS_COUNT);
+            // auto svalue = static_cast<size_t>(value);
+            // auto color = colors_palett[svalue];
+
+            float h = 360.0F * value / value_max;
+            float s = 1.0F;
+            float v =  value < threshold ? 1.0F : 0.0F;
+            float r,g,b;
+
+            HSVtoRGB(r,g,b,h,s,v);
+
+            uint8_t pxr = static_cast<uint8_t>(255.0F*r);
+            uint8_t pxg = static_cast<uint8_t>(255.0F*g);
+            uint8_t pxb = static_cast<uint8_t>(255.0F*b);
+
+
+            //SDL_Color color{static_cast<uint8_t>(value*255.0/(double)(Presets::Rendering::PALETTE_COLORS_COUNT)), 0,0,255};
+            // SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+            // SDL_SetRenderDrawColor(renderer, pxr, pxg, pxb, 255);
+            // SDL_RenderDrawPoint(renderer, ix, iy);
+            
+            Uint32 * const target_pixel = (Uint32 *) ((Uint8 *) surface->pixels
+                                             + iy * surface->pitch
+                                             + ix * surface->format->BytesPerPixel);
+
+            
+            *target_pixel = SDL_MapRGB(surface->format, pxr, pxg, pxb);
+        }
+    }
+    
+    SDL_UnlockSurface(surface);
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_RenderCopy(renderer, texture, NULL, &destr);
+    SDL_DestroyTexture(texture);
+}
 
 // void MainRenderer::add_sprite(const Sprite* sprite) {
 //     batch.push_back(sprite);

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "Settings.h"
 #include "FractalViewer.h"
