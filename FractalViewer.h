@@ -6,7 +6,12 @@
 
 class FractalViewer: public Engine {
 public:
-	FractalViewer() : Engine() {};
+	FractalViewer() : Engine() {
+        buffer = new float[Presets::Sim::BUFFER_SIZE];
+    };
+    ~FractalViewer() {
+        delete []buffer;
+    }
 	bool setup(size_t window_width, size_t window_height);
 	virtual bool input(SDL_Event &ev) override;
 	virtual void update(double dt) override;
@@ -14,12 +19,8 @@ public:
 
     Rect sim_area{{-1, -1}, {1, 1}};
     Point cam_center{Presets::Sim::CAM_X, Presets::Sim::CAM_Y};
-    // size_t sim_resolution_x{Presets::WINDOW_WIDTH};
-    // size_t sim_resolution_y{Presets::WINDOW_HEIGHT};
-    // size_t sim_iterations{Presets::Sim::ITERATIONS};
-    // void set()
 
-    float buffer[Presets::Sim::BUFFER_SIZE];
+    float* buffer {nullptr};
     double scale{1};
     int scale_mod = 0;
     Point translation_dir{0,0};

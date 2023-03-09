@@ -114,24 +114,8 @@ void FractalViewer::update(double dt) {
     for (size_t i = 0; i < Presets::Sim::THREADS_COUNT; i++) {
         threads[i].join();
     }
+
     threads.clear();
-    // for(size_t iy{0}; iy<Presets::WINDOW_HEIGHT; iy += Presets::Sim::THREADS_COUNT) {
-    //     for(size_t iyt{0}; iyt < Presets::Sim::THREADS_COUNT; ++iyt) {
-    //         auto i = iy + iyt;
-    //         double fy = static_cast<double>(i) / static_cast<double>(Presets::WINDOW_HEIGHT);
-    //         double zy = fy * sim_area.h + sim_area.y;
-    //         threads.push_back(std::thread(draw_images_line, buffer + i * Presets::WINDOW_WIDTH , Presets::WINDOW_WIDTH, constant, zy, sim_area.x, sim_area.w));
-    //         // threads.push_back(std::thread(donothing));
-    //     }
-    //     // draw_images_line(buffer[iy], constant, zy, sim_area.x, sim_area.w);
-    //     for (size_t i = 0; i < Presets::Sim::THREADS_COUNT; i++) {
-    //         threads[i].join();
-    //     }
-    //     threads.clear();
-    // }
-
-
-
 
     if(animate) {
         sim_time += dt;
